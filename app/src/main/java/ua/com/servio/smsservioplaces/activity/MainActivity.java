@@ -1,4 +1,4 @@
-package ua.com.servio.smsservioplaces;
+package ua.com.servio.smsservioplaces.activity;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +8,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import ua.com.servio.smsservioplaces.R;
 
 public class MainActivity extends AppCompatActivity {
 
