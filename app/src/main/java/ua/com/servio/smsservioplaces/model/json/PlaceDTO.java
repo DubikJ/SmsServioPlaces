@@ -31,5 +31,36 @@ public class PlaceDTO {
     @SerializedName("Bills")
     private List<BillDTO> bills;
 
+    public PlaceDTO(int id, String name, String code, int left, int top, List<BillDTO> bills) {
+        this.id = id;
+        this.name = name;
+        this.code = code;
+        this.left = left;
+        this.top = top;
+        this.bills = bills;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public int getLeft() {
+        return left;
+    }
+
+    public int getTop() {
+        return top;
+    }
+
+    public List<BillDTO> getBills() {
+        return bills;
+    }
 }

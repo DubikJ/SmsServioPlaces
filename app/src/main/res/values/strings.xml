@@ -1,4 +1,27 @@
 <resources>
-    <string name="app_name">SmsServioPlaces</string>
+    <string name="app_name">Places</string>
     <string name="action_settings">Settings</string>
+
+    <string name="download">Загрузка</string>
+
+    <string name="questions_title_info">Инфо</string>
+    <string name="questions_answer_ok">Ок</string>
+
+    <!-- Pull To Refresh View-->
+    <string name="pull_to_refresh_pull_label">Потяните, чтобы загрузить...</string>
+    <string name="pull_to_refresh_release_label">Отпустите, чтобы загрузить ...</string>
+    <string name="pull_to_refresh_refreshing_label">Загрузка данных...</string>
+    <string name="pull_to_refresh_tap_label">Нажмите, чтобы загрузить ...</string>
+
+    <string name="sync_error">Ошибка синхронизации.</string>
+    <string name="sync_cancel">Отменено синхронизацию.</string>
+    <string name="sync_timeout">Закончилось время синхронизации.</string>
+    <string name="error_internet_connecting">Отсутствует соединение с интернетом!</string>
+    <string name="error_no_data">На серевере не найдено данных!</string>
+    <string name="error_data_not_found">Данные не найдено!</string>
+    <string name="error_data_server">Ошибка обработки данных на сервере!</string>
+    <string name="error_retrieving_data">Ошибка получения данных!</string>
+    <string name="error_connection_server">Соединение с сервером не установлено!
+        Возможно адрес сервера заполнен некорректно.</string>
+
 </resources>

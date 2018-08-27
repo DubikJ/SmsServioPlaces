@@ -1,3 +1,9 @@
 <resources>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+
+
+    <dimen name="basic_margin_list">5dp</dimen>
+    <dimen name="basic_progress_bar_size">50dp</dimen>
+    <dimen name="basic_margin_cap">10dp</dimen>
+
 </resources>

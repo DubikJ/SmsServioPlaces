@@ -12,7 +12,7 @@ import static ua.com.servio.smsservioplaces.common.Consts.CONNECT_PATTERN_URL;
 public interface SyncService {
 
     @GET(CONNECT_PATTERN_URL)
-    Call<DownloadResponse> search(@QueryMap Map<String, String> params);
+    Call<DownloadResponse> search();
 
 //    @GET
 //    Call<OwnerDTO> getOwner(@Url String url);
