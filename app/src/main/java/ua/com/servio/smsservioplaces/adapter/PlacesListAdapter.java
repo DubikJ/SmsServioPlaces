@@ -1,18 +1,26 @@
 package ua.com.servio.smsservioplaces.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import ua.com.servio.smsservioplaces.R;
 import ua.com.servio.smsservioplaces.adapter.treelistview.Element;
+import ua.com.servio.smsservioplaces.model.json.PlaceDTO;
 
 
 public class PlacesListAdapter extends BaseAdapter {
@@ -63,7 +71,7 @@ public class PlacesListAdapter extends BaseAdapter {
         if(element.isHasChildren()) {
             convertView = layoutInflater.inflate(R.layout.fragment_hierarchical_element, null);
         }else {
-          //  convertView = layoutInflater.inflate(R.layout.animal_item, null);
+            convertView = layoutInflater.inflate(R.layout.place_hierarchical_element, null);
         }
 
         return fillView(convertView, element);
@@ -73,14 +81,12 @@ public class PlacesListAdapter extends BaseAdapter {
         ImageView disclosureImg;
         TextView mTextView;
         RelativeLayout mCardView;
-        TextView mCodeNameTV;
-        TextView mCodeTV;
-        TextView mRfidTV;
+        GridView mPlaces;
     }
 
     public View fillView(View convertView, final Element element) {
 
-        ViewHolder holder = new ViewHolder();
+        final ViewHolder holder = new ViewHolder();
 
         holder.mCardView = (RelativeLayout) convertView.findViewById(R.id.element_rl);
 
@@ -90,10 +96,8 @@ public class PlacesListAdapter extends BaseAdapter {
             holder.disclosureImg = (ImageView) convertView.findViewById(R.id.element_imageview);
             holder.mTextView = (TextView) convertView.findViewById(R.id.element_textview);
         }else{
-//            holder.mTextView = (TextView) convertView.findViewById(R.id.list_animal_type);
-//            holder.mCodeNameTV = (TextView) convertView.findViewById(R.id.list_animal_code_name);
-//            holder.mCodeTV = (TextView) convertView.findViewById(R.id.list_animal_code);
-//            holder.mRfidTV = (TextView) convertView.findViewById(R.id.list_animal_rfid);
+            holder.mTextView = (TextView) convertView.findViewById(R.id.element_textview);
+            holder.mPlaces = (GridView) convertView.findViewById(R.id.gvMain);
         }
 
         int level = element.getLevel();
@@ -104,7 +108,7 @@ public class PlacesListAdapter extends BaseAdapter {
                 holder.mCardView.getPaddingRight(),
                 holder.mCardView.getPaddingBottom());
 
-        String housingCode = element.getExternalId();
+        String housingCode = String.valueOf(element.getId());
         String housingName = element.getContentText();
 
         if(element.isHasChildren()) {
@@ -121,22 +125,42 @@ public class PlacesListAdapter extends BaseAdapter {
                 holder.disclosureImg.setVisibility(View.INVISIBLE);
             }
         }else {
-//            Animal animalItem = (Animal) element.getAnimal();
-//            if(animalItem!=null) {
-//                holder.mTextView.setText(element.getContentText());
-//                holder.mRfidTV.setText(animalItem.getRfid());
-//                if(animalItem.isGroupAnimal()){
-//                    holder.mCodeNameTV.setText(context.getResources().getString(R.string.animal_group_number_short));
-//                    holder.mCodeTV.setText(String.valueOf(animalItem.getNumber()));
-//                }else{
-//                    holder.mCodeNameTV.setText(context.getResources().getString(R.string.service_item_number_symbol));
-//                    holder.mCodeTV.setText(animalItem.getCode());
-//                }
-//            }
-//            Glide.with(holder.mAvatar.getContext())
-//                    .load(element.getPhotoFile() == null ? R.drawable.ic_pig_photo : element.getPhotoFile())
-//                    .fitCenter()
-//                    .into(holder.mAvatar);
+            holder.mTextView.setText(element.getContentText());
+            final List <PlaceDTO> listPlaces = element.getPlaces();
+            if(listPlaces!= null) {
+                holder.mPlaces.setAdapter(new PlacesAdapter(context, element.getPlaces()));
+                holder.mPlaces.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        PlaceDTO placeDTO = listPlaces.get(position);
+
+                        if (placeDTO.getBills() != null&&placeDTO.getBills().size()>0) {
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.DialogTheme);
+                            builder.setTitle(placeDTO.getName());
+
+                            final View viewInflated = LayoutInflater.from(context).inflate(R.layout.bill_layout, null);
+
+                            ListView mBills = (ListView) viewInflated.findViewById(R.id.list_bills);
+                            mBills.setAdapter(new BillsAdapter(context, placeDTO.getBills()));
+                            builder.setView(viewInflated);
+
+                            builder.setPositiveButton(context.getResources().getString(R.string.questions_answer_ok), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                }
+                            });
+
+                            AlertDialog alert = builder.create();
+                            alert.setCanceledOnTouchOutside(false);
+                            alert.show();
+                        }else{
+                            Toast.makeText(context, context.getResources().getString(R.string.bill_not_found), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
         }
 
         return convertView;

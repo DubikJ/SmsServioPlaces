@@ -30,10 +30,7 @@ public class PullToRefreshListView extends ListView implements OnScrollListener 
     private static final String TAG = "PullToRefreshListView";
 
     private OnRefreshListener mOnRefreshListener;
-
-    /**
-     * Listener that will receive notifications every time the list scrolls.
-     */
+    
     private OnScrollListener mOnScrollListener;
     private LayoutInflater mInflater;
 

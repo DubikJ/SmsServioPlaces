@@ -3,9 +3,9 @@ package ua.com.servio.smsservioplaces.model.json;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class PlaceDTO {
+public class PlaceDTO{
 
     @Expose
     @SerializedName("ID")
@@ -29,9 +29,9 @@ public class PlaceDTO {
 
     @Expose
     @SerializedName("Bills")
-    private List<BillDTO> bills;
+    private ArrayList<BillDTO> bills;
 
-    public PlaceDTO(int id, String name, String code, int left, int top, List<BillDTO> bills) {
+    public PlaceDTO(int id, String name, String code, int left, int top, ArrayList<BillDTO> bills) {
         this.id = id;
         this.name = name;
         this.code = code;
@@ -60,7 +60,8 @@ public class PlaceDTO {
         return top;
     }
 
-    public List<BillDTO> getBills() {
+    public ArrayList<BillDTO> getBills() {
         return bills;
     }
+
 }

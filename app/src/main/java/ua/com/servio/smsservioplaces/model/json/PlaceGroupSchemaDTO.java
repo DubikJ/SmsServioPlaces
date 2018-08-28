@@ -3,7 +3,7 @@ package ua.com.servio.smsservioplaces.model.json;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PlaceGroupSchemaDTO {
 
@@ -13,9 +13,9 @@ public class PlaceGroupSchemaDTO {
 
     @Expose
     @SerializedName("Places")
-    private List<PlaceDTO> places;
+    private ArrayList<PlaceDTO> places;
 
-    public PlaceGroupSchemaDTO(String name, List<PlaceDTO> places) {
+    public PlaceGroupSchemaDTO(String name, ArrayList<PlaceDTO> places) {
         this.name = name;
         this.places = places;
     }
@@ -24,7 +24,7 @@ public class PlaceGroupSchemaDTO {
         return name;
     }
 
-    public List<PlaceDTO> getPlaces() {
+    public ArrayList<PlaceDTO> getPlaces() {
         return places;
     }
 }

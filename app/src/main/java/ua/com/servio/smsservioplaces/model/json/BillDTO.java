@@ -3,8 +3,6 @@ package ua.com.servio.smsservioplaces.model.json;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class BillDTO {
     @Expose
     @SerializedName("ID")
@@ -16,7 +14,7 @@ public class BillDTO {
 
     @Expose
     @SerializedName("Opened")
-    private int opened;
+    private String opened;
 
     @Expose
     @SerializedName("Total")
@@ -26,7 +24,7 @@ public class BillDTO {
     @SerializedName("OpenUser")
     private String openUser;
 
-    public BillDTO(int id, int number, int opened, double total, String openUser) {
+    public BillDTO(int id, int number, String opened, double total, String openUser) {
         this.id = id;
         this.number = number;
         this.opened = opened;
@@ -42,7 +40,7 @@ public class BillDTO {
         return number;
     }
 
-    public int getOpened() {
+    public String getOpened() {
         return opened;
     }
 

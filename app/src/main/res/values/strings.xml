@@ -7,6 +7,7 @@
     <string name="questions_title_info">Инфо</string>
     <string name="questions_answer_ok">Ок</string>
 
+
     <!-- Pull To Refresh View-->
     <string name="pull_to_refresh_pull_label">Потяните, чтобы загрузить...</string>
     <string name="pull_to_refresh_release_label">Отпустите, чтобы загрузить ...</string>
@@ -23,5 +24,18 @@
     <string name="error_retrieving_data">Ошибка получения данных!</string>
     <string name="error_connection_server">Соединение с сервером не установлено!
         Возможно адрес сервера заполнен некорректно.</string>
+
+    <string name="place_number">Место</string>
+    <string name="place_placing">Pазмещение</string>
+    <string name="place_top">Сверху</string>
+    <string name="place_left">Слева</string>
+    <string name="bill_num">Номер счета</string>
+    <string name="bill_opened">Создан</string>
+    <string name="bill_total">Сумма</string>
+    <string name="bill_open_user">Автор</string>
+    <string name="have_bills">Есть счета</string>
+    <string name="have_not_bills">Счетов нету</string>
+
+    <string name="bill_not_found">Не найдено счетов</string>
 
 </resources>

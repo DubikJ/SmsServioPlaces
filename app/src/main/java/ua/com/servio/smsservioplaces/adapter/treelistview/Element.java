@@ -1,4 +1,10 @@
 package ua.com.servio.smsservioplaces.adapter.treelistview;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import ua.com.servio.smsservioplaces.model.json.PlaceDTO;
+
 public class Element {
     private String contentText;
     private int level;
@@ -8,10 +14,7 @@ public class Element {
     private boolean isExpanded;
     public static final int NO_PARENT = -1;
     public static final int TOP_LEVEL = 0;
-    private String externalId;
-    private String externalparentId;
-    private Object object;
-    private String fullNameImage;
+    private ArrayList<PlaceDTO> places;
 
 
     public Element(String contentText, int level, int id, int parendId,
@@ -26,7 +29,7 @@ public class Element {
     }
 
     public Element(String contentText, int level, int id, int parendId,
-                   boolean hasChildren, boolean isExpanded, String externalId, String externalparentId) {
+                   boolean hasChildren, boolean isExpanded, ArrayList<PlaceDTO> places) {
         super();
         this.contentText = contentText;
         this.level = level;
@@ -34,24 +37,9 @@ public class Element {
         this.parendId = parendId;
         this.hasChildren = hasChildren;
         this.isExpanded = isExpanded;
-        this.externalId = externalId;
-        this.externalparentId = externalparentId;
+        this.places = places;
     }
 
-    public Element(String contentText, int level, int id, int parendId,
-                   boolean hasChildren, boolean isExpanded, String externalId,
-                   String externalparentId, Object object) {
-        super();
-        this.contentText = contentText;
-        this.level = level;
-        this.id = id;
-        this.parendId = parendId;
-        this.hasChildren = hasChildren;
-        this.isExpanded = isExpanded;
-        this.externalId = externalId;
-        this.externalparentId = externalparentId;
-        this.object = object;
-    }
 
     public boolean isExpanded() {
         return isExpanded;
@@ -101,35 +89,11 @@ public class Element {
         this.hasChildren = hasChildren;
     }
 
-    public String getExternalId() {
-        return externalId;
+    public List<PlaceDTO> getPlaces() {
+        return places;
     }
 
-    public void setExternalId(String externalId) {
-        this.externalId = externalId;
-    }
-
-    public String getExternalparentId() {
-        return externalparentId;
-    }
-
-    public void setExternalparentId(String externalparentId) {
-        this.externalparentId = externalparentId;
-    }
-
-    public Object getObject() {
-        return object;
-    }
-
-    public void setObject(Object object) {
-        this.object = object;
-    }
-
-    public String getFullNameImage() {
-        return fullNameImage;
-    }
-
-    public void setFullNameImage(String fullNameImage) {
-        this.fullNameImage = fullNameImage;
+    public void setPlaces(ArrayList<PlaceDTO> places) {
+        this.places = places;
     }
 }
